@@ -3,7 +3,16 @@ var sqlite3 = require('sqlite3');
 var bodyParser = require('body-parser')
 
 //HelloExpress.db has to be in node directory
-var db = new sqlite3.Database('HelloExpress.db');
+var db = new sqlite3.Database(':memory:');
+
+db.serialize(function() {
+    db.run("CREATE TABLE Quotes(Quote VARCHAR(255), Author VARCHAR(255));");
+    var today = new Date().toLocaleDateString();
+    var time  = new Date().toLocaleTimeString();
+    var quote = 'Today ('+today+' @ '+time+') is the 1st day of the rest of your life.';
+    db.run("INSERT INTO Quotes VALUES ('"+quote+"', 'Unknown')");
+});
+
 var app = express();
 
 // parse application/x-www-form-urlencoded 

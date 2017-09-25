@@ -19,12 +19,9 @@ Connection: keep-alive
 
 inserted {"quote":"Help Ma Boab!","author":"Oor Wullie"}
 
-You have to initialise the database with...
-
-from within node directory...
-
-sqlite3 HelloExpress.db
+NOW USING IN MEMORY DB - WHICH IS INITIALISED ON STARTUP.
 
 CREATE TABLE Quotes(Quote VARCHAR(255), Author VARCHAR(255));
 INSERT INTO Quotes VALUES ('Life is Short', 'Unknown');
+
 
