@@ -1,7 +1,10 @@
 var express = require('express');
 var app = express();
 
-app.use(express.static('public'))
+//app.use(express.static('public'))
+
+//this is better - doesn't care where you run node from :-)
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 app.listen(3000, function(){
      console.log("Server is listening on port 3000");
